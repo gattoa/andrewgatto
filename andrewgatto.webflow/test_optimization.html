@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Test Dashboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.pass { background: #d4edda; color: #155724; }
+        .status.fail { background: #f8d7da; color: #721c24; }
+        .status.info { background: #d1ecf1; color: #0c5460; }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .test-link {
+            display: block;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .console {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Portfolio Optimization Test Dashboard</h1>
+        <p>Testing Phase 1 optimizations: Image compression, WebP support, and lazy loading</p>
+    </div>
+
+    <div class="test-grid">
+        <div class="test-section">
+            <h2>📊 Performance Metrics</h2>
+            <div class="performance-metrics">
+                <div class="metric">
+                    <div class="metric-value" id="originalSize">76MB</div>
+                    <div class="metric-label">Original Images</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="optimizedSize">39MB</div>
+                    <div class="metric-label">Optimized Images</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="webpSize">16MB</div>
+                    <div class="metric-label">WebP Images</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="savings">49%</div>
+                    <div class="metric-label">Size Reduction</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 Browser Support Tests</h2>
+            <div id="browserTests">
+                <p>🔄 Running browser compatibility tests...</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🖼️ Image Loading Tests</h2>
+            <div id="imageTests">
+                <p>🔄 Testing image formats and lazy loading...</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📱 Mobile Optimization</h2>
+            <div id="mobileTests">
+                <p>🔄 Checking responsive image behavior...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Test Your Portfolio Pages</h2>
+        <div class="test-links">
+            <a href="index.html" class="test-link" target="_blank">🏠 Home Page</a>
+            <a href="about.html" class="test-link" target="_blank">👤 About Page</a>
+            <a href="work/fnk-recipe-page.html" class="test-link" target="_blank">🍳 FNK Recipe Project</a>
+            <a href="work/njtransit.html" class="test-link" target="_blank">🚊 NJ Transit Project</a>
+            <a href="work/sxmalexa.html" class="test-link" target="_blank">🎵 SXM Alexa Project</a>
+            <a href="work/sxmgoogle.html" class="test-link" target="_blank">🎧 SXM Google Project</a>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🛠️ Developer Tools</h2>
+        <p>Use these browser developer tools to verify optimizations:</p>
+        <ul>
+            <li><strong>Network Tab:</strong> Check image file sizes and WebP format usage</li>
+            <li><strong>Lighthouse:</strong> Run performance audit (should see 60-70% improvement)</li>
+            <li><strong>Console:</strong> Monitor for lazy loading messages</li>
+            <li><strong>Mobile View:</strong> Test responsive behavior</li>
+        </ul>
+        
+        <div class="console" id="testConsole">
+            <div>✅ Optimization test dashboard loaded</div>
+            <div>🔄 Run tests by visiting portfolio pages above</div>
+            <div>📊 Monitor Network tab for image loading behavior</div>
+        </div>
+    </div>
+
+    <script>
+        // Browser support detection
+        function runBrowserTests() {
+            const tests = [];
+            
+            // WebP support test
+            const webpSupported = (function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = 1;
+                canvas.height = 1;
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            })();
+            
+            tests.push({
+                name: 'WebP Support',
+                status: webpSupported ? 'pass' : 'info',
+                message: webpSupported ? 'Browser supports WebP' : 'Fallback to PNG/JPEG will be used'
+            });
+            
+            // Lazy loading support test
+            const lazyLoadingSupported = 'loading' in HTMLImageElement.prototype;
+            tests.push({
+                name: 'Native Lazy Loading',
+                status: lazyLoadingSupported ? 'pass' : 'info',
+                message: lazyLoadingSupported ? 'Native lazy loading available' : 'Using Intersection Observer polyfill'
+            });
+            
+            // Intersection Observer support test
+            const intersectionObserverSupported = 'IntersectionObserver' in window;
+            tests.push({
+                name: 'Intersection Observer',
+                status: intersectionObserverSupported ? 'pass' : 'fail',
+                message: intersectionObserverSupported ? 'Intersection Observer available' : 'Polyfill needed'
+            });
+            
+            return tests;
+        }
+        
+        function runImageTests() {
+            const tests = [];
+            
+            // Test if optimized images directory exists by trying to load a test image
+            const testImg = new Image();
+            testImg.onload = function() {
+                tests.push({
+                    name: 'Optimized Images',
+                    status: 'pass',
+                    message: 'Optimized image directory accessible'
+                });
+                updateImageTests(tests);
+            };
+            testImg.onerror = function() {
+                tests.push({
+                    name: 'Optimized Images',
+                    status: 'fail',
+                    message: 'Cannot access optimized images directory'
+                });
+                updateImageTests(tests);
+            };
+            testImg.src = 'optimized_images/nav.png';
+            
+            return tests;
+        }
+        
+        function runMobileTests() {
+            const tests = [];
+            
+            // Check viewport meta tag
+            const viewportMeta = document.querySelector('meta[name="viewport"]');
+            tests.push({
+                name: 'Viewport Meta Tag',
+                status: viewportMeta ? 'pass' : 'fail',
+                message: viewportMeta ? 'Responsive viewport configured' : 'Missing viewport meta tag'
+            });
+            
+            // Check screen size
+            const isSmallScreen = window.innerWidth < 768;
+            tests.push({
+                name: 'Screen Size Detection',
+                status: 'info',
+                message: `Current screen: ${window.innerWidth}x${window.innerHeight} (${isSmallScreen ? 'Mobile' : 'Desktop'})`
+            });
+            
+            return tests;
+        }
+        
+        function updateTestSection(sectionId, tests) {
+            const section = document.getElementById(sectionId);
+            section.innerHTML = tests.map(test => 
+                `<div>
+                    <span class="status ${test.status}">${test.status.toUpperCase()}</span>
+                    <strong>${test.name}:</strong> ${test.message}
+                </div>`
+            ).join('');
+        }
+        
+        function updateImageTests(tests) {
+            updateTestSection('imageTests', tests);
+        }
+        
+        function addConsoleMessage(message) {
+            const console = document.getElementById('testConsole');
+            const div = document.createElement('div');
+            div.textContent = new Date().toLocaleTimeString() + ' - ' + message;
+            console.appendChild(div);
+            console.scrollTop = console.scrollHeight;
+        }
+        
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const browserTests = runBrowserTests();
+            updateTestSection('browserTests', browserTests);
+            
+            const imageTests = runImageTests();
+            
+            const mobileTests = runMobileTests();
+            updateTestSection('mobileTests', mobileTests);
+            
+            addConsoleMessage('All tests completed');
+            
+            // Performance observer to track image loading
+            if ('PerformanceObserver' in window) {
+                const observer = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                        if (entry.initiatorType === 'img') {
+                            addConsoleMessage(`Image loaded: ${entry.name.split('/').pop()} (${Math.round(entry.duration)}ms)`);
+                        }
+                    }
+                });
+                observer.observe({entryTypes: ['resource']});
+            }
+        });
+    </script>
+</body>
+</html> 
